@@ -6,10 +6,10 @@ import Data.Text.Encoding
 import qualified Data.ByteString.Lazy as L
 import qualified Data.ByteString.Char8 as C
 
-(email, name) = ("", encodeUtf8 "") -- адрес почты и фамилия с инициалами
+(email, name) = ("torunova@phystech.edu", encodeUtf8 "Торунова А.С.") -- адрес почты и фамилия с инициалами
 
 pascal :: Int -> Int -> Int
-pascal c r = 1 -- а тут решение
+pascal c r =   if(c == 0 || c == r) then 1 else (pascal (c-1) (r-1)) + (pascal c (r-1))-- а тут решение
 
 printIt :: Int -> C.ByteString
 printIt n = C.pack $ show $ [pascal y x | x <- [0..n], y <- [0..x]]
